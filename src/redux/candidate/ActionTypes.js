@@ -1,0 +1,3 @@
+export default {
+  CANDIDATE_GET: 'CANDIDATE/CANDIDATE_GET'
+}

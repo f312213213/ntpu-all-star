@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-function App() {
+import store from './redux/store'
+import Main from './pages/Main'
+
+const App = () => {
+  /*
+  * TODO
+  * @gm.ntpu.edu.tw 信箱登入
+  * 排行榜 顯示多少票
+  * 投票 照片 簡介
+  * 一人兩票
+  * 籃球
+  *
+  */
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <Router>
+        <Main />
+      </Router>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
