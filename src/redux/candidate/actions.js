@@ -1,7 +1,6 @@
 import ActionTypes from './ActionTypes'
 
-export const getCandidate = () => {
-  const candidates = []
+export const getCandidate = (candidates) => {
   return {
     type: ActionTypes.CANDIDATE_GET,
     payload: candidates

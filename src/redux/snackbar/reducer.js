@@ -2,7 +2,7 @@ import ActionTypes from './ActionTypes'
 
 const defaultState = {
   show: false,
-  type: '',
+  type: 'success',
   message: ''
 }
 
