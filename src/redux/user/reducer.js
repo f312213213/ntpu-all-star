@@ -5,6 +5,9 @@ export default (state = {}, action) => {
     case ActionTypes.USER_LOGIN: {
       return action.payload
     }
+    case ActionTypes.USER_UPDATE: {
+      return action.payload
+    }
     case ActionTypes.USER_LOGOUT: {
       return {}
     }
