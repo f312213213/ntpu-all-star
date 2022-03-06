@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Home from './Home'
 import Category from './Cotegary'
@@ -13,6 +13,7 @@ const AppRouter = () => {
         <Route path={'/category'} exact element={<Category />} />
         <Route path={'/login'} exact element={<Login />} />
         <Route path={'/'} exact element={<Home />} />
+        <Route path={'*'} element={<Navigate to="/" />} />
       </Routes>
   )
 }

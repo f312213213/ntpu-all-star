@@ -8,12 +8,7 @@ import Main from './pages/Main'
 const App = () => {
   /*
   * TODO
-  * @gm.ntpu.edu.tw 信箱登入
-  * 排行榜 顯示多少票
-  * 投票 照片 簡介
-  * 一人兩票
-  * 籃球
-  *
+  * 排行榜
   */
 
   return (

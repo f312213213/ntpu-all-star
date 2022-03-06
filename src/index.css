@@ -9,3 +9,7 @@
 .PageContainer {
     @apply relative md:w-2/3 w-full flex flex-col items-center rounded-2xl
 }
+
+.PageContainer > a {
+    @apply w-full h-full
+}
