@@ -14,6 +14,10 @@ const CandidateCard = ({ candidate, id, sportType }) => {
 
   const vote = async () => {
     dispatch(actions.user.userVote(dispatch, sportCount, localUser, db, sportType, id, setCount, count))
+    window.gtag('event', 'vote', {
+      event_category: 'vote',
+      event_label: id
+    })
   }
   return (
       <div className="w-full h-96 rounded flex flex-col items-center shadow-lg bg-custom-200">

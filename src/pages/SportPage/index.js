@@ -33,10 +33,15 @@ const SportPage = () => {
 
   useEffect(() => {
     getData()
+    window.gtag('event', 'load_' + sportType + 'Page', {
+      event_category: 'load',
+      event_label: sportType
+    })
   }, [])
 
   useEffect(() => {
-    dispatch(actions.helmet.changeHelmet(`${sportType} | 北大明星賽 2022`, `這個頁面在投${sportType}`))
+    const text = sportType === 'basketball' ? '籃球' : '排球'
+    dispatch(actions.helmet.changeHelmet(`${text} | 北大明星賽 2022`, `這個頁面在投${sportType}`))
   })
 
   const changeHandler = () => {
@@ -50,18 +55,21 @@ const SportPage = () => {
 
   return (
       <div className={'w-full min-h-screen pt-20 pb-5 bg-custom-500'}>
-        <div className={'w-full flex justify-around my-4'}>
-          <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 rounded outline-0 ring-4 ring-custom-400 focus:ring-red-700'}/>
+        <div className={'w-full flex justify-center items-center my-4'}>
+          <div className={'w-2/5 flex-col'}>
+            <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 w-full rounded outline-0 ring-4 ring-custom-400 focus:ring-custom-700'}/>
 
-          {loaclUser.displayName &&
-            <div>
-              你在這個分區還有 <span className={'text-red-500'}>{3 - loaclUser[sportType + 'VoteCount']}</span> 票可以投
-            </div>
-          }
+            {loaclUser.displayName &&
+                <div className={'m-4 text-center'}>
+                  你在這個分區還有 <span className={'text-red-500'}>{3 - loaclUser[sportType + 'VoteCount']}</span> 票可以投
+                </div>
+            }
+          </div>
+
         </div>
         {
           candidates.length > 0
-            ? <div className={'w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4'}>
+            ? <div className={'w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4'}>
                 {
                   candidates.map((c) => <CandidateCard sportType={sportType} key={c.id} id={c.id} candidate={c.data}/>)
                 }

@@ -42,6 +42,9 @@ const Login = () => {
             }
             setDoc(doc(db, 'user', result.user.uid), newUserData)
             dispatch(actions.user.userLogin(newUserData))
+            window.gtag('event', 'login', {
+              method: 'Google'
+            })
           })
         dispatch(actions.snackbar.showSnackbar('success', '登入成功！'))
         dispatch(actions.backdrop.closeBackdrop())
