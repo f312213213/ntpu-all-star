@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import CandidateCard from './components/CandidateCard'
 import { useParams } from 'react-router-dom'
 import actions from '../../redux/actions'
+import { useUser } from '../../hooks/user'
 
 const SportPage = () => {
   const [candidates, setCandidates] = useState([])
@@ -12,6 +13,7 @@ const SportPage = () => {
   const { sportType } = useParams()
   const searchRef = createRef()
   const dispatch = useDispatch()
+  const loaclUser = useUser()
 
   const getData = () => {
     dispatch(actions.backdrop.showBackdrop())
@@ -33,6 +35,10 @@ const SportPage = () => {
     getData()
   }, [])
 
+  useEffect(() => {
+    dispatch(actions.helmet.changeHelmet(`${sportType} | 北大明星賽 2022`, `這個頁面在投${sportType}`))
+  })
+
   const changeHandler = () => {
     if (searchRef.current.value === '') {
       setCandidates(copy)
@@ -44,8 +50,14 @@ const SportPage = () => {
 
   return (
       <div className={'w-full min-h-screen pt-20 pb-5 bg-custom-500'}>
-        <div className={'w-full flex justify-center my-4'}>
+        <div className={'w-full flex justify-around my-4'}>
           <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 rounded outline-0 ring-4 ring-custom-400 focus:ring-red-700'}/>
+
+          {loaclUser.displayName &&
+            <div>
+              你在這個分區還有 <span className={'text-red-500'}>{3 - loaclUser[sportType + 'VoteCount']}</span> 票可以投
+            </div>
+          }
         </div>
         {
           candidates.length > 0

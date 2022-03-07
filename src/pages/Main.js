@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import { useDispatch } from 'react-redux'
 import actions from '../redux/actions'
 import BackdropC from '../components/Backdrop'
+import SEO from './SEO'
 
 const Main = () => {
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const Main = () => {
 
   return (
       <>
+        <SEO />
         <BackdropC />
         <Navbar />
         <Snackbar />

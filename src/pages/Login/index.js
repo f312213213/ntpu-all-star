@@ -57,6 +57,10 @@ const Login = () => {
     checkLogin()
   }, [])
 
+  useEffect(() => {
+    dispatch(actions.helmet.changeHelmet('登入 | 北大明星賽 2022', '這是登入北大明星賽投票網站的頁面'))
+  })
+
   return (
       <div className={'Page'}>
         <div className={'PageContainer bg-custom-200 flex justify-center items-center'}>

@@ -1,4 +1,4 @@
-import { doc, increment, updateDoc } from 'firebase/firestore'
+import { doc, getDoc, increment, updateDoc } from 'firebase/firestore'
 import { getAuth, signOut } from 'firebase/auth'
 
 import ActionTypes from './ActionTypes'
@@ -49,6 +49,10 @@ export const userVote = async (dispatch, sportCount, localUser, db, sportType, i
     voteCount: increment(1),
     voted: [...localUser.voted, id]
   })
+  getDoc(doc(db, 'user', localUser.uid))
+    .then((firestoreDoc) => {
+      dispatch(actions.user.userLogin(firestoreDoc.data()))
+    })
   setCount(count + 1)
   dispatch(actions.snackbar.showSnackbar('success', '投票成功！'))
   dispatch(actions.backdrop.closeBackdrop())
