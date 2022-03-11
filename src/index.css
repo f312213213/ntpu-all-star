@@ -7,7 +7,7 @@
 }
 
 .PageContainer {
-    @apply relative md:w-2/3 w-full flex flex-col items-center rounded-2xl
+    @apply relative md:w-2/3 w-full flex flex-col items-center md:rounded-2xl
 }
 
 .PageContainer > a {

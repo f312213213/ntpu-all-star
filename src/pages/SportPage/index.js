@@ -13,7 +13,7 @@ const SportPage = () => {
   const { sportType } = useParams()
   const searchRef = createRef()
   const dispatch = useDispatch()
-  const loaclUser = useUser()
+  const localUser = useUser()
 
   const getData = () => {
     dispatch(actions.backdrop.showBackdrop())
@@ -59,9 +59,9 @@ const SportPage = () => {
           <div className={'w-2/5 flex-col'}>
             <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 w-full rounded outline-0 ring-4 ring-custom-400 focus:ring-custom-700'}/>
 
-            {loaclUser.displayName &&
+            {localUser.displayName &&
                 <div className={'m-4 text-center'}>
-                  你在這個分區還有 <span className={'text-red-500'}>{3 - loaclUser[sportType + 'VoteCount']}</span> 票可以投
+                  你在這個分區還有 <span className={'text-red-500'}>{3 - localUser[sportType + 'VoteCount']}</span> 票可以投
                 </div>
             }
           </div>
@@ -75,7 +75,9 @@ const SportPage = () => {
                 }
               </div>
             : <div className={'w-full text-center text-custom-200 text-2xl'}>
-                沒有明星ㄌ
+                {
+                  copy.length > 0 ? '沒有明星ㄌ' : '載入中'
+                }
               </div>
         }
 

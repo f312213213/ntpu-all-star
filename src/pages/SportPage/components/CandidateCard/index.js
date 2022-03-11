@@ -21,7 +21,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
   }
   return (
       <div className="w-full h-96 rounded flex flex-col items-center shadow-lg bg-custom-200">
-        <img className="h-1/2" src={candidate.photoLink} alt={candidate.introduction} />
+        <img className="h-1/2" src={candidate.photoLink || candidate.photoURL} alt={candidate.introduction} />
         <div className="p-4 flex flex-col items-center">
           <div className="font-bold text-xl">{candidate.username}</div>
           <p className="text-gray-700 text-base">
