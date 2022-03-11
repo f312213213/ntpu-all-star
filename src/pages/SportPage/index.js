@@ -15,28 +15,8 @@ const SportPage = () => {
   const dispatch = useDispatch()
   const localUser = useUser()
 
-  const getData = () => {
-    dispatch(actions.backdrop.showBackdrop())
-    setTimeout(async () => {
-      setCandidates([])
-      const tempArray = []
-      const db = getFirestore()
-      const querySnapshot = await getDocs(collection(db, sportType))
-      querySnapshot.forEach((doc) => {
-        tempArray.push({ id: doc.id, data: doc.data() })
-      })
-      setCandidates(tempArray)
-      setCopy(tempArray)
-      dispatch(actions.backdrop.closeBackdrop())
-    }, 1000)
-  }
-
   useEffect(() => {
-    getData()
-    window.gtag('event', 'load_' + sportType + 'Page', {
-      event_category: 'load',
-      event_label: sportType
-    })
+    dispatch(actions.app.getSportPageData(dispatch, sportType, setCandidates, setCopy))
   }, [])
 
   useEffect(() => {

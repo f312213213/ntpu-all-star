@@ -1,5 +1,5 @@
-import { doc, getDoc, increment, updateDoc } from 'firebase/firestore'
-import { getAuth, signOut } from 'firebase/auth'
+import { doc, getDoc, increment, setDoc, updateDoc } from 'firebase/firestore'
+import { getAuth, getRedirectResult, signOut } from 'firebase/auth'
 
 import ActionTypes from './ActionTypes'
 import actions from '../actions'
@@ -31,7 +31,7 @@ export const userUpdate = (user) => {
   }
 }
 
-export const userVote = async (dispatch, sportCount, localUser, db, sportType, id, setCount, count) => {
+export const userVote = (dispatch, sportCount, localUser, db, sportType, id, setCount, count) => async () => {
   dispatch(actions.backdrop.showBackdrop())
   dispatch(actions.user.userUpdate({
     ...localUser,
@@ -53,6 +53,10 @@ export const userVote = async (dispatch, sportCount, localUser, db, sportType, i
     .then((firestoreDoc) => {
       dispatch(actions.user.userLogin(firestoreDoc.data()))
     })
+  window.gtag('event', 'vote', {
+    event_category: 'vote',
+    event_label: id
+  })
   setCount(count + 1)
   dispatch(actions.snackbar.showSnackbar('success', '投票成功！'))
   dispatch(actions.backdrop.closeBackdrop())
