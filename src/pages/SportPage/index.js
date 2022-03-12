@@ -1,5 +1,4 @@
 import React, { useEffect, useState, createRef } from 'react'
-import { getFirestore, collection, getDocs } from 'firebase/firestore'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
@@ -37,7 +36,7 @@ const SportPage = () => {
   return (
       <div className={'w-full min-h-screen pt-20 pb-5 bg-custom-500'}>
         <div className={'w-full flex justify-center items-center my-4'}>
-          <div className={'w-2/5 flex-col'}>
+          <div className={'w-3/5 md:w-2/5 flex-col'}>
             <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 w-full rounded outline-0 ring-4 ring-custom-400 focus:ring-custom-700'}/>
 
             {localUser.displayName &&

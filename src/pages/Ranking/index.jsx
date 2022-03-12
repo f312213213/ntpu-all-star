@@ -12,9 +12,7 @@ function Ranking () {
   return (
       <div className={'Page'}>
         <div className={'PageContainer bg-custom-200'}>
-
         </div>
-
       </div>
   )
 }
