@@ -31,17 +31,26 @@ const Login = () => {
           })
           .catch(() => {
             const newUserData = {
-              basketballVoteCount: 0,
               displayName: result.user.displayName,
               email: result.user.email,
               uid: result.user.uid,
               photoURL: result.user.photoURL,
-              volleyballVoteCount: 0,
               voteCount: 0,
+              vbEdgeLineVC: 0,
+              vbLiberoVC: 0,
+              vbSetterVC: 0,
+              vbSpikerVC: 0,
+              vgSetterVC: 0,
+              vgEdgeLineVC: 0,
+              bbVC: 0,
+              bgVC: 0,
               voted: []
             }
             setDoc(doc(db, 'user', result.user.uid), newUserData)
             dispatch(actions.user.userLogin(newUserData))
+            window.gtag('event', 'login', {
+              method: 'Google'
+            })
           })
         dispatch(actions.snackbar.showSnackbar('success', '登入成功！'))
         dispatch(actions.backdrop.closeBackdrop())
@@ -56,6 +65,10 @@ const Login = () => {
   useEffect(() => {
     checkLogin()
   }, [])
+
+  useEffect(() => {
+    dispatch(actions.helmet.changeHelmet('登入 | 北大明星賽 2022', '這是登入北大明星賽投票網站的頁面'))
+  })
 
   return (
       <div className={'Page'}>

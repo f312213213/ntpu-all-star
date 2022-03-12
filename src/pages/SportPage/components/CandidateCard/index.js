@@ -4,20 +4,22 @@ import { useDispatch } from 'react-redux'
 
 import { useUser } from '../../../../hooks/user'
 import actions from '../../../../redux/actions'
+import { useCategoryData } from '../../../../hooks/app'
 
 const CandidateCard = ({ candidate, id, sportType }) => {
   const db = getFirestore()
   const dispatch = useDispatch()
   const localUser = useUser()
   const [count, setCount] = useState(candidate.voteCount)
-  const sportCount = sportType + 'VoteCount'
+  const categoryData = useCategoryData(sportType)
+  const userCanVote = localUser[categoryData.sportCount] < categoryData.canVote && localUser.voted.indexOf(id) === -1
 
   const vote = async () => {
-    dispatch(actions.user.userVote(dispatch, sportCount, localUser, db, sportType, id, setCount, count))
+    dispatch(actions.user.userVote(dispatch, categoryData.sportCount, localUser, db, categoryData.pathName, id, setCount, count))
   }
   return (
       <div className="w-full h-96 rounded flex flex-col items-center shadow-lg bg-custom-200">
-        <img className="h-1/2" src={candidate.photoLink} alt={candidate.introduction} />
+        <img className="h-1/2" src={candidate.photoLink || candidate.photoURL} alt={candidate.introduction} />
         <div className="p-4 flex flex-col items-center">
           <div className="font-bold text-xl">{candidate.username}</div>
           <p className="text-gray-700 text-base">
@@ -26,8 +28,8 @@ const CandidateCard = ({ candidate, id, sportType }) => {
         </div>
         <div className="px-6">
           {
-            localUser[sportCount] < 3 && localUser.voted.indexOf(id) === -1 &&
-              <button onClick={vote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500'}>
+            localUser.uid &&
+              <button onClick={vote} disabled={!userCanVote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500 disabled:border-none disabled:text-gray-700 disabled:opacity-75 disabled:bg-gray-300'}>
                 投給我！
               </button>
           }
