@@ -12,6 +12,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
   const localUser = useUser()
   const [count, setCount] = useState(candidate.voteCount)
   const categoryData = useCategoryData(sportType)
+  const userCanVote = localUser[categoryData.sportCount] < categoryData.canVote && localUser.voted.indexOf(id) === -1
 
   const vote = async () => {
     dispatch(actions.user.userVote(dispatch, categoryData.sportCount, localUser, db, categoryData.pathName, id, setCount, count))
@@ -27,8 +28,8 @@ const CandidateCard = ({ candidate, id, sportType }) => {
         </div>
         <div className="px-6">
           {
-            localUser[categoryData.sportCount] < categoryData.canVote && localUser.voted.indexOf(id) === -1 && localUser &&
-              <button onClick={vote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500'}>
+            localUser.uid &&
+              <button onClick={vote} disabled={!userCanVote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500 disabled:border-none disabled:text-gray-700 disabled:opacity-75 disabled:bg-gray-300'}>
                 投給我！
               </button>
           }
