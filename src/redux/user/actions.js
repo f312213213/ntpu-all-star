@@ -31,7 +31,7 @@ export const userUpdate = (user) => {
   }
 }
 
-export const userVote = (dispatch, sportCount, localUser, db, sportType, id, setCount, count) => async () => {
+export const userVote = (dispatch, sportCount, localUser, db, pathName, id, setCount, count) => async () => {
   dispatch(actions.backdrop.showBackdrop())
   dispatch(actions.user.userUpdate({
     ...localUser,
@@ -40,7 +40,7 @@ export const userVote = (dispatch, sportCount, localUser, db, sportType, id, set
     voted: [...localUser.voted, id]
   }))
 
-  const currentCardRef = doc(db, sportType, id)
+  const currentCardRef = doc(db, pathName, id)
   await updateDoc(currentCardRef, {
     voteCount: increment(1)
   })

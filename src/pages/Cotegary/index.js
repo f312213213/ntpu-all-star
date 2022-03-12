@@ -14,8 +14,14 @@ const Category = () => {
   return (
       <div className={'Page'}>
         <div className={'PageContainer flex flex-col justify-evenly overflow-hidden divide-y divide-gray-500 bg-custom-200'}>
-          <SportType type={'籃球'} path={'basketball'} />
-          <SportType type={'排球'} path={'volleyball'} />
+          <SportType type={'男籃'} path={'basketballMale'} />
+          <SportType type={'女籃'} path={'basketballFemale'} />
+          <SportType type={'男排-舉球員'} path={'volleyballMaleSetter'} />
+          <SportType type={'男排-自由球員'} path={'volleyballMaleLibero'} />
+          <SportType type={'男排-快攻手'} path={'volleyballMaleSpiker'} />
+          <SportType type={'男排-邊線'} path={'volleyballMaleEdgeLine'} />
+          <SportType type={'女排-舉球員'} path={'volleyballFemaleSetter'} />
+          <SportType type={'女排-邊線'} path={'volleyballFemaleEdgeLine'} />
         </div>
       </div>
   )

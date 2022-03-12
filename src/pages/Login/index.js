@@ -31,13 +31,19 @@ const Login = () => {
           })
           .catch(() => {
             const newUserData = {
-              basketballVoteCount: 0,
               displayName: result.user.displayName,
               email: result.user.email,
               uid: result.user.uid,
               photoURL: result.user.photoURL,
-              volleyballVoteCount: 0,
               voteCount: 0,
+              vbEdgeLineVC: 0,
+              vbLiberoVC: 0,
+              vbSetterVC: 0,
+              vbSpikerVC: 0,
+              vgSetterVC: 0,
+              vgEdgeLineVC: 0,
+              bbVC: 0,
+              bgVC: 0,
               voted: []
             }
             setDoc(doc(db, 'user', result.user.uid), newUserData)

@@ -6,6 +6,7 @@ import CandidateCard from './components/CandidateCard'
 import { useParams } from 'react-router-dom'
 import actions from '../../redux/actions'
 import { useUser } from '../../hooks/user'
+import { useCategoryData } from '../../hooks/app'
 
 const SportPage = () => {
   const [candidates, setCandidates] = useState([])
@@ -14,14 +15,14 @@ const SportPage = () => {
   const searchRef = createRef()
   const dispatch = useDispatch()
   const localUser = useUser()
+  const categoryData = useCategoryData(sportType)
 
   useEffect(() => {
     dispatch(actions.app.getSportPageData(dispatch, sportType, setCandidates, setCopy))
   }, [])
 
   useEffect(() => {
-    const text = sportType === 'basketball' ? '籃球' : '排球'
-    dispatch(actions.helmet.changeHelmet(`${text} | 北大明星賽 2022`, `這個頁面在投${sportType}`))
+    dispatch(actions.helmet.changeHelmet(`${categoryData?.text} | 北大明星賽 2022`, `這個頁面在投${sportType}`))
   })
 
   const changeHandler = () => {
@@ -41,14 +42,14 @@ const SportPage = () => {
 
             {localUser.displayName &&
                 <div className={'m-4 text-center'}>
-                  你在這個分區還有 <span className={'text-red-500'}>{3 - localUser[sportType + 'VoteCount']}</span> 票可以投
+                  你在這個分區還有 <span className={'text-red-500'}>{categoryData.canVote - localUser[categoryData.sportCount]}</span> 票可以投
                 </div>
             }
           </div>
 
         </div>
         {
-          candidates.length > 0
+          candidates?.length > 0
             ? <div className={'w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4'}>
                 {
                   candidates.map((c) => <CandidateCard sportType={sportType} key={c.id} id={c.id} candidate={c.data}/>)
