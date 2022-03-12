@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import actions from '../redux/actions'
 
 const SEO = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const metaData = useSelector(state => state.helmet)
+
+  useEffect(() => {
+    if (metaData.title.indexOf('undefined') !== -1) {
+      dispatch(actions.backdrop.closeBackdrop())
+      navigate('/')
+    }
+  }, [metaData])
   return (
       <Helmet>
         <title>{metaData.title}</title>

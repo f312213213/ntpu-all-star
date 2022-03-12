@@ -1,9 +1,9 @@
 import React, { useEffect, useState, createRef } from 'react'
 import { getFirestore, collection, getDocs } from 'firebase/firestore'
 import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
 import CandidateCard from './components/CandidateCard'
-import { useParams } from 'react-router-dom'
 import actions from '../../redux/actions'
 import { useUser } from '../../hooks/user'
 import { useCategoryData } from '../../hooks/app'
@@ -22,7 +22,7 @@ const SportPage = () => {
   }, [])
 
   useEffect(() => {
-    dispatch(actions.helmet.changeHelmet(`${categoryData?.text} | 北大明星賽 2022`, `這個頁面在投${sportType}`))
+    dispatch(actions.helmet.changeHelmet(`${categoryData?.text} | 北大明星賽 2022`, `這個頁面在投${categoryData?.text}`))
   })
 
   const changeHandler = () => {

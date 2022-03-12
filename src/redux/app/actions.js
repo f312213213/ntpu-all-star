@@ -27,10 +27,8 @@ export const getSportPageData = (dispatch, sportType, setCandidates, setCopy) =>
       pathName = sportType === 'basketballFemale' ? 'basketball/female/candidates' : 'basketball/male/candidates'
     } else if (sportType.indexOf('volleyballMale') !== -1) {
       pathName = `volleyball/male/${sportType?.substring(14)?.toLowerCase()}`
-      console.log(pathName)
     } else if (sportType.indexOf('volleyballFemale') !== -1) {
       pathName = `volleyball/female/${sportType?.substring(16)?.toLowerCase()}`
-      console.log(pathName)
     }
     const querySnapshot = await getDocs(collection(db, pathName))
     querySnapshot.forEach((doc) => {
