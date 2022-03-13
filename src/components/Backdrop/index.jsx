@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { useSelector } from 'react-redux'
 
 const BackdropC = () => {
-  const open = useSelector(state => state.backdrop)
+  const open = useSelector(state => state.app.backdrop)
   return (
       <Backdrop
           sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

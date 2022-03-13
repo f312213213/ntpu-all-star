@@ -16,12 +16,12 @@ const Login = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    dispatch(actions.backdrop.showBackdrop())
+    dispatch(actions.app.showBackdrop())
     signInWithRedirect(auth, provider)
   }
 
   const checkLogin = async () => {
-    dispatch(actions.backdrop.showBackdrop())
+    dispatch(actions.app.showBackdrop())
     const result = await getRedirectResult(auth)
     if (result) {
       if (result.user.email.includes('gm.ntpu.edu.tw')) {
@@ -52,14 +52,14 @@ const Login = () => {
               method: 'Google'
             })
           })
-        dispatch(actions.snackbar.showSnackbar('success', '登入成功！'))
-        dispatch(actions.backdrop.closeBackdrop())
+        dispatch(actions.app.showSnackbar('success', '登入成功！'))
+        dispatch(actions.app.closeBackdrop())
         return navigate('/category')
       } else {
-        dispatch(actions.snackbar.showSnackbar('error', '這不是北大的信箱！'))
+        dispatch(actions.app.showSnackbar('error', '這不是北大的信箱！'))
       }
     }
-    dispatch(actions.backdrop.closeBackdrop())
+    dispatch(actions.app.closeBackdrop())
   }
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Login = () => {
   }, [])
 
   useEffect(() => {
-    dispatch(actions.helmet.changeHelmet('登入 | 北大明星賽 2022', '這是登入北大明星賽投票網站的頁面'))
+    dispatch(actions.app.changeHelmet('登入 | 北大明星賽 2022', '這是登入北大明星賽投票網站的頁面'))
   })
 
   return (

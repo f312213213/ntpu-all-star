@@ -7,11 +7,11 @@ import actions from '../redux/actions'
 const SEO = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const metaData = useSelector(state => state.helmet)
+  const metaData = useSelector(state => state.app.helmet)
 
   useEffect(() => {
     if (metaData.title.indexOf('undefined') !== -1) {
-      dispatch(actions.backdrop.closeBackdrop())
+      dispatch(actions.app.closeSnackbar())
       navigate('/')
     }
   }, [metaData])

@@ -7,7 +7,7 @@ function Ranking () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(actions.helmet.changeHelmet('排行榜 | 北大明星賽 2022', '這是北大明星賽投票網站的排行榜'))
+    dispatch(actions.app.changeHelmet('排行榜 | 北大明星賽 2022', '這是北大明星賽投票網站的排行榜'))
   })
   return (
       <div className={'Page'}>

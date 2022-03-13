@@ -8,7 +8,7 @@ const Category = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(actions.helmet.changeHelmet('選擇球類 | 北大明星賽 2022', '這是北大明星賽投票網站的投票入口'))
+    dispatch(actions.app.changeHelmet('選擇球類 | 北大明星賽 2022', '這是北大明星賽投票網站的投票入口'))
   })
 
   return (

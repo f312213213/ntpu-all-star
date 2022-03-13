@@ -15,8 +15,8 @@ export const userLogout = (dispatch) => {
   const auth = getAuth()
   signOut(auth)
   setTimeout(() => {
-    dispatch(actions.backdrop.closeBackdrop())
-    dispatch(actions.snackbar.showSnackbar('success', '成功登出！'))
+    dispatch(actions.app.closeBackdrop())
+    dispatch(actions.app.showSnackbar('success', '成功登出！'))
   }, 500)
 
   return {
@@ -32,7 +32,7 @@ export const userUpdate = (user) => {
 }
 
 export const userVote = (dispatch, sportCount, localUser, db, pathName, id, setCount, count) => async () => {
-  dispatch(actions.backdrop.showBackdrop())
+  dispatch(actions.app.showBackdrop())
   dispatch(actions.user.userUpdate({
     ...localUser,
     [sportCount]: localUser[sportCount] + 1,
@@ -58,6 +58,6 @@ export const userVote = (dispatch, sportCount, localUser, db, pathName, id, setC
     event_label: id
   })
   setCount(count + 1)
-  dispatch(actions.snackbar.showSnackbar('success', '投票成功！'))
-  dispatch(actions.backdrop.closeBackdrop())
+  dispatch(actions.app.showSnackbar('success', '投票成功！'))
+  dispatch(actions.app.closeBackdrop())
 }
