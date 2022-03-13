@@ -2,7 +2,7 @@ import ActionTypes from './ActionTypes'
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
 
-import { collection, getDocs, getFirestore } from 'firebase/firestore'
+import { collection, getDocs, getFirestore, query, orderBy } from 'firebase/firestore'
 
 import { firebaseConfig } from '../../config/firebaseConfig'
 import actions from '../actions'
@@ -58,7 +58,10 @@ export const getSportPageData = (dispatch, sportType, setCandidates, setCopy) =>
     } else if (sportType.indexOf('volleyballFemale') !== -1) {
       pathName = `volleyball/female/${sportType?.substring(16)?.toLowerCase()}`
     }
-    const querySnapshot = await getDocs(collection(db, pathName))
+
+    const q = query(collection(db, pathName), orderBy('voteCount', 'desc'))
+
+    const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       tempArray.push({ id: doc.id, data: doc.data() })
     })
