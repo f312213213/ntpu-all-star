@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .Page {
-    @apply w-full min-h-screen flex justify-center pt-20 pb-5 bg-custom-500
+    @apply w-full min-h-screen flex justify-center pt-20 pb-5 bg-custom-500 dark:bg-custom-1000 transition
 }
 
 .PageContainer {
-    @apply relative md:w-2/3 w-full flex flex-col items-center md:rounded-2xl
+    @apply relative md:w-2/3 w-full flex flex-col items-center md:rounded-2xl bg-custom-200 dark:bg-custom-900 dark:text-custom-200 shadow-xl transition
 }
 
 .PageContainer > a {

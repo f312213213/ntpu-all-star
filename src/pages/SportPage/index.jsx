@@ -34,15 +34,15 @@ const SportPage = () => {
   }
 
   return (
-      <div className={'w-full min-h-screen pt-20 pb-5 bg-custom-500'}>
+      <div className={'w-full min-h-screen pt-20 pb-5 bg-custom-500 dark:bg-custom-900 transition'}>
         <div className={'w-full flex justify-center items-center my-4'}>
           <div className={'w-3/5 md:w-2/5 flex-col'}>
             <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 w-full rounded outline-0 ring-4 ring-custom-400 focus:ring-custom-700'}/>
-            <div className={'m-4 text-center'}>
-              這個分區是：<span className={'bg-white p-2'}>{categoryData.text}</span>
+            <div className={'m-4 text-center dark:text-custom-200'}>
+              這個分區是：<span className={'bg-white p-2 dark:text-custom-900'}>{categoryData.text}</span>
             </div>
             {localUser.displayName &&
-                <div className={'m-4 text-center'}>
+                <div className={'m-4 text-center dark:text-custom-200'}>
                   你在這個分區還有 <span className={'text-red-500 bg-white p-2'}>{categoryData.canVote - localUser[categoryData.sportCount]}</span> 票可以投
                 </div>
             }

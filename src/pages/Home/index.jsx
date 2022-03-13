@@ -12,8 +12,24 @@ const Home = () => {
 
   return (
       <div className={'Page'}>
-        <div className={'PageContainer bg-custom-200 flex justify-center items-center'}>
-          這是首頁
+        <div className={'PageContainer flex flex-col justify-center items-center space-y-4'}>
+          <div>
+            投票時間：
+          </div>
+          <div className={'flex flex-col items-center'}>
+            投票須知：
+            <span>
+              1. 需使用學校配發之 @gm.ntpu.edu.tw 信箱登入
+            </span>
+            <span>
+              2. 各球類與位置有不同票數，請留意系統指示
+            </span>
+            <span>
+              3. 投票完成後將無法變更，請確認投票正確
+            </span>
+          </div>
+
+          <button className={'mt-'}>前往投票</button>
         </div>
       </div>
   )

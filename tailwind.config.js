@@ -1,24 +1,25 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     colors: {
       custom: {
-        1000: '#0f1824',
-        900: '#1e2f48',
-        800: '#2c476d',
-        700: '#3b5f91',
-        600: '#4a77b5',
-        500: '#6e92c4',
-        400: '#92add3',
-        300: '#b7c8e1',
-        200: '#dbe4f0',
-        100: '#edf1f8'
+        1000: '#111822',
+        900: '#213045',
+        800: '#324867',
+        700: '#42608a',
+        600: '#5378ac',
+        500: '#7593bd',
+        400: '#98aecd',
+        300: '#bac9de',
+        200: '#dde4ee',
+        100: '#eef2f7'
       },
-      highLight: '#4ab5a3',
+      highLight: '#ac53a5',
       gray: colors.gray,
       black: colors.black,
       white: colors.white,

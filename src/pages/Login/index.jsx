@@ -72,7 +72,7 @@ const Login = () => {
         <div className={'PageContainer bg-custom-200 flex justify-center items-center'}>
           {
             !userLocal.displayName &&
-              <button onClick={handleClick} className={'bg-custom-900 text-custom-200 px-4 py-2 rounded-2xl hover:bg-custom-700 transition'}>
+              <button onClick={handleClick} className={'bg-custom-1000 text-custom-200 px-4 py-2 rounded-2xl hover:bg-custom-700 transition'}>
                 用學校發的google帳號登入
               </button>
           }
