@@ -10,6 +10,7 @@
 
 > notice:需要先至 firebase 專案裡開啟各項功能
 ```js
+// src/config/firebaseConfig.js
 export const firebaseConfig = {
   apiKey: '',
   authDomain: '',
