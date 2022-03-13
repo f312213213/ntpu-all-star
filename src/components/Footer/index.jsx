@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ModeNightIcon from '@mui/icons-material/ModeNight'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import GitHubIcon from '@mui/icons-material/GitHub'
 
 const Footer = () => {
   const [mode, setMode] = useState(localStorage.theme)
@@ -34,11 +35,11 @@ const Footer = () => {
           , made with ❤️
         </div>
         <div>
-          <button className={'mr-8'} onClick={toggleDarkMode}>
+          <button className={'mr-4'} onClick={toggleDarkMode}>
             {mode === 'dark' ? <WbSunnyIcon /> : <ModeNightIcon />}
           </button>
           <a href={'https://github.com/f312213213/ntpu-all-star'} target={'_blank'} rel="noreferrer">
-            github
+            <GitHubIcon />
           </a>
         </div>
 
