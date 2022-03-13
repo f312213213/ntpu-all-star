@@ -66,7 +66,7 @@ export const useCategoryData = (sportType) => {
       text: '女排-邊線',
       canVote: 6,
       sportCount: 'vgEdgeLineVC',
-      pathName: 'volleyball/female/setter'
+      pathName: 'volleyball/female/edgeline'
     }
   }
 }
