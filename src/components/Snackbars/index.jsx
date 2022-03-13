@@ -6,13 +6,13 @@ import actions from '../../redux/actions'
 
 const Snackbars = () => {
   const dispatch = useDispatch()
-  const snackbar = useSelector(state => state.snackbar)
+  const snackbar = useSelector(state => state.app.snackbar)
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return
     }
-    dispatch(actions.snackbar.closeSnackbar())
+    dispatch(actions.app.closeSnackbar())
   }
 
   return (

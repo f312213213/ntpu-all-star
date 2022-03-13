@@ -21,7 +21,7 @@ const SportPage = () => {
   }, [])
 
   useEffect(() => {
-    dispatch(actions.helmet.changeHelmet(`${categoryData?.text} | 北大明星賽 2022`, `這個頁面在投${categoryData?.text}`))
+    dispatch(actions.app.changeHelmet(`${categoryData?.text} | 北大明星賽 2022`, `這個頁面在投${categoryData?.text}`))
   })
 
   const changeHandler = () => {
@@ -39,7 +39,7 @@ const SportPage = () => {
           <div className={'w-3/5 md:w-2/5 flex-col'}>
             <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 w-full rounded outline-0 ring-4 ring-custom-400 focus:ring-custom-700'}/>
             <div className={'m-4 text-center'}>
-              這個分區是：{categoryData.text}
+              這個分區是：<span className={'bg-white p-2'}>{categoryData.text}</span>
             </div>
             {localUser.displayName &&
                 <div className={'m-4 text-center'}>

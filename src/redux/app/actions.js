@@ -16,8 +16,36 @@ export const appInit = () => {
   }
 }
 
+export const changeHelmet = (type, message) => ({
+  type: ActionTypes.CHANGE_HELMET,
+  payload: {
+    title: type,
+    description: message
+  }
+})
+
+export const showSnackbar = (type, message) => ({
+  type: ActionTypes.SHOW_SNACKBAR,
+  payload: {
+    snackbarType: type,
+    snackbarMessage: message
+  }
+})
+
+export const closeSnackbar = () => ({
+  type: ActionTypes.CLOSE_SNACKBAR
+})
+
+export const showBackdrop = () => ({
+  type: ActionTypes.SHOW_BACKDROP
+})
+
+export const closeBackdrop = () => ({
+  type: ActionTypes.CLOSE_BACKDROP
+})
+
 export const getSportPageData = (dispatch, sportType, setCandidates, setCopy) => async () => {
-  dispatch(actions.backdrop.showBackdrop())
+  dispatch(actions.app.showBackdrop())
   setTimeout(async () => {
     setCandidates([])
     const tempArray = []
@@ -37,7 +65,7 @@ export const getSportPageData = (dispatch, sportType, setCandidates, setCopy) =>
 
     setCandidates(tempArray)
     setCopy(tempArray)
-    dispatch(actions.backdrop.closeBackdrop())
+    dispatch(actions.app.closeBackdrop())
   }, 1000)
   window.gtag('event', 'load_' + sportType + 'Page', {
     event_category: 'load',

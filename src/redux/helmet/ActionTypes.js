@@ -1,3 +1,0 @@
-export default {
-  CHANGE_HELMET: 'HELMET/CHANGE_HELMET'
-}
