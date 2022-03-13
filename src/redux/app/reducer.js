@@ -45,9 +45,12 @@ export default (state = defaultState, action) => {
     }
     case ActionTypes.SHOW_SNACKBAR: {
       return {
-        show: true,
-        type: action.payload.snackbarType,
-        message: action.payload.snackbarMessage
+        ...state,
+        snackbar: {
+          show: true,
+          type: action.payload.snackbarType,
+          message: action.payload.snackbarMessage
+        }
       }
     }
     case ActionTypes.CLOSE_SNACKBAR: {

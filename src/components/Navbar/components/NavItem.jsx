@@ -6,7 +6,7 @@ import actions from '../../../redux/actions'
 const NavItem = ({ text, path }) => {
   const dispatch = useDispatch()
   const handleLogout = () => {
-    dispatch(actions.backdrop.showBackdrop())
+    dispatch(actions.app.showBackdrop())
     dispatch(actions.user.userLogout(dispatch))
   }
   if (text === '登出') {

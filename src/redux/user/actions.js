@@ -5,6 +5,9 @@ import ActionTypes from './ActionTypes'
 import actions from '../actions'
 
 export const userLogin = (user) => {
+  window.gtag('event', 'login', {
+    method: 'Google'
+  })
   return {
     type: ActionTypes.USER_LOGIN,
     payload: user
