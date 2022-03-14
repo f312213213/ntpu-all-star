@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import ModeNightIcon from '@mui/icons-material/ModeNight'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import { useDispatch } from 'react-redux'
+import actions from '../../redux/actions'
 
 const Footer = () => {
   const [mode, setMode] = useState(localStorage.theme)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -38,15 +41,14 @@ const Footer = () => {
           ❤️
         </div>
 
-        <div>
+        <div className={'flex'}>
           <button className={'mr-4'} onClick={toggleDarkMode}>
             {mode === 'dark' ? <WbSunnyIcon /> : <ModeNightIcon />}
           </button>
-          <a href={'https://github.com/f312213213/ntpu-all-star'} target={'_blank'} rel="noreferrer">
+          <div onClick={() => dispatch(actions.app.showSnackbar('info', '將在投票結束後開源！'))} rel="noreferrer" className={'cursor-pointer'}>
             <GitHubIcon />
-          </a>
+          </div>
         </div>
-
       </footer>
   )
 }
