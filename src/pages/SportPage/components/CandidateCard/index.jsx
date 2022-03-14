@@ -17,6 +17,10 @@ const CandidateCard = ({ candidate, id, sportType }) => {
   const vote = async () => {
     dispatch(actions.user.userVote(dispatch, categoryData.sportCount, localUser, db, categoryData.pathName, id, setCount, count))
   }
+
+  const confirmVote = async () => {
+    dispatch(actions.app.showConfirmDialog(`確定投給 ${candidate.username} 嗎？`, '確定投給他嗎', vote))
+  }
   return (
       <div className="w-full h-96 rounded flex flex-col items-center shadow-lg bg-custom-200">
         <img className="h-1/2" src={candidate.photoLink || candidate.photoURL} alt={candidate.introduction} />
@@ -29,7 +33,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
         <div className="px-6">
           {
             localUser.uid &&
-              <button onClick={vote} disabled={!userCanVote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500 disabled:border-none disabled:text-gray-700 disabled:opacity-75 disabled:bg-gray-300'}>
+              <button onClick={confirmVote} disabled={!userCanVote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500 disabled:border-none disabled:text-gray-700 disabled:opacity-75 disabled:bg-gray-300'}>
                 投給我！
               </button>
           }

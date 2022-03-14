@@ -7,6 +7,12 @@ const defaultState = {
     type: 'success',
     message: ''
   },
+  alertDialog: {
+    show: false,
+    text: null,
+    title: null,
+    onConfirm: null
+  },
   backdrop: false,
   helmet: {
     title: '北大明星賽 | 2022',
@@ -45,15 +51,35 @@ export default (state = defaultState, action) => {
     }
     case ActionTypes.SHOW_SNACKBAR: {
       return {
-        show: true,
-        type: action.payload.snackbarType,
-        message: action.payload.snackbarMessage
+        ...state,
+        snackbar: {
+          show: true,
+          type: action.payload.snackbarType,
+          message: action.payload.snackbarMessage
+        }
       }
     }
     case ActionTypes.CLOSE_SNACKBAR: {
       return {
         ...state,
         snackbar: defaultState.snackbar
+      }
+    }
+    case ActionTypes.SHOW_CONFIRM: {
+      return {
+        ...state,
+        alertDialog: {
+          show: true,
+          title: action.payload.title,
+          message: action.payload.message,
+          onConfirm: action.payload.onConfirm
+        }
+      }
+    }
+    case ActionTypes.CLOSE_CONFIRM: {
+      return {
+        ...state,
+        alertDialog: defaultState.alertDialog
       }
     }
     default: {
