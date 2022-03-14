@@ -16,7 +16,7 @@ export const useCategoryData = (sportType) => {
   if (sportType === 'basketballFemale') {
     return {
       text: '女籃',
-      canVote: 3,
+      canVote: 5,
       sportCount: 'bgVC',
       pathName: 'basketball/female/candidates'
     }
