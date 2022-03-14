@@ -9,13 +9,18 @@ const NavItem = ({ text, path }) => {
     dispatch(actions.app.showBackdrop())
     dispatch(actions.user.userLogout(dispatch))
   }
+
+  const confirmLogout = async () => {
+    dispatch(actions.app.showConfirmDialog('88', '確定登出嗎', handleLogout))
+  }
+
   if (text === '登出') {
     return (
-        <Link to={path}>
-          <div onClick={handleLogout}>
+        <>
+          <div onClick={confirmLogout} className={'cursor-pointer'}>
             {text}
           </div>
-        </Link>
+        </>
     )
   }
   return (

@@ -64,8 +64,7 @@ const AppRouter = () => {
         .then((firestoreDoc) => {
           dispatch(actions.user.userLogin(firestoreDoc.data()))
         })
-      dispatch(actions.app.closeBackdrop())
-      return navigate('/category')
+      return dispatch(actions.app.closeBackdrop())
     }
     dispatch(actions.app.closeBackdrop())
   }
