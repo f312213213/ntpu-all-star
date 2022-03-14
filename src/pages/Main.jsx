@@ -12,7 +12,6 @@ import SEO from './SEO'
 const Main = () => {
   const dispatch = useDispatch()
   dispatch(actions.app.appInit())
-
   return (
       <>
         <SEO />

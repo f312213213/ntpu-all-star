@@ -29,11 +29,15 @@ const Footer = () => {
   }
   return (
       <footer className={'-bottom-10 flex justify-between items-center bg-custom-800 text-custom-200 p-2 w-full px-8'}>
-        <div>
-          Build by&nbsp;
-          <a href="https://chiendavid.com" target={'_blank'} rel="noreferrer" className={'font-bold capitalize'}> david</a>
-          , made with ❤️
+        <div className={'group h-full'}>
+          <div className={'scale-0 group-hover:scale-100 absolute -bottom-3 bg-custom-600 rounded p-2'}>
+            Build by&nbsp;
+            <a href="https://chiendavid.com" target={'_blank'} rel="noreferrer" className={'font-bold capitalize'}> david</a>
+            , made with ❤️
+          </div>
+          ❤️
         </div>
+
         <div>
           <button className={'mr-4'} onClick={toggleDarkMode}>
             {mode === 'dark' ? <WbSunnyIcon /> : <ModeNightIcon />}

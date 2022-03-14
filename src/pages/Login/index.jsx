@@ -1,67 +1,21 @@
 import React, { useEffect } from 'react'
-import { getAuth, signInWithRedirect, GoogleAuthProvider, getRedirectResult } from 'firebase/auth'
-import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
+import { getAuth, signInWithRedirect, GoogleAuthProvider, browserSessionPersistence, setPersistence } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 import actions from '../../redux/actions'
 import { useUser } from '../../hooks/user'
 
 const Login = () => {
   const auth = getAuth()
-  const provider = new GoogleAuthProvider()
   const dispatch = useDispatch()
+  const provider = new GoogleAuthProvider()
   const userLocal = useUser()
-  const db = getFirestore()
-  const navigate = useNavigate()
 
   const handleClick = () => {
     dispatch(actions.app.showBackdrop())
-    signInWithRedirect(auth, provider)
+    setPersistence(auth, browserSessionPersistence)
+      .then(() => signInWithRedirect(auth, provider))
   }
-
-  const checkLogin = async () => {
-    dispatch(actions.app.showBackdrop())
-    const result = await getRedirectResult(auth)
-    if (result) {
-      if (result.user.email.includes('gm.ntpu.edu.tw')) {
-        getDoc(doc(db, 'user', result.user.uid))
-          .then((firestoreDoc) => {
-            dispatch(actions.user.userLogin(firestoreDoc.data()))
-          })
-          .catch(() => {
-            const newUserData = {
-              displayName: result.user.displayName,
-              email: result.user.email,
-              uid: result.user.uid,
-              photoURL: result.user.photoURL,
-              voteCount: 0,
-              vbEdgeLineVC: 0,
-              vbLiberoVC: 0,
-              vbSetterVC: 0,
-              vbSpikerVC: 0,
-              vgSetterVC: 0,
-              vgEdgeLineVC: 0,
-              bbVC: 0,
-              bgVC: 0,
-              voted: []
-            }
-            setDoc(doc(db, 'user', result.user.uid), newUserData)
-            dispatch(actions.user.userLogin(newUserData))
-          })
-        dispatch(actions.app.showSnackbar('success', '登入成功！'))
-        dispatch(actions.app.closeBackdrop())
-        return navigate('/category')
-      } else {
-        dispatch(actions.app.showSnackbar('error', '這不是北大的信箱！'))
-      }
-    }
-    dispatch(actions.app.closeBackdrop())
-  }
-
-  useEffect(() => {
-    checkLogin()
-  }, [])
 
   useEffect(() => {
     dispatch(actions.app.changeHelmet('登入 | 北大明星賽 2022', '這是登入北大明星賽投票網站的頁面'))

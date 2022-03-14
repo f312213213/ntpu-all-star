@@ -1,10 +1,21 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import actions from '../../redux/actions'
+import { useUser } from '../../hooks/user'
 
 const Home = () => {
   const dispatch = useDispatch()
+  const user = useUser()
+  const navigate = useNavigate()
+
+  const clickHandler = () => {
+    if (user.uid) {
+      return navigate('/category')
+    }
+    return navigate('/login')
+  }
 
   useEffect(() => {
     dispatch(actions.app.changeHelmet('首頁 | 北大明星賽 2022', '這是北大明星賽投票網站的首頁'))
@@ -28,8 +39,9 @@ const Home = () => {
               3. 投票完成後將無法變更，請確認投票正確
             </span>
           </div>
-
-          <button className={'mt-'}>前往投票</button>
+          {
+            <button className={'bg-highLight p-4 rounded-xl'} onClick={clickHandler}>前往投票</button>
+          }
         </div>
       </div>
   )
