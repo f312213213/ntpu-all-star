@@ -36,6 +36,19 @@ export const closeSnackbar = () => ({
   type: ActionTypes.CLOSE_SNACKBAR
 })
 
+export const showConfirmDialog = (message, title, onConfirm) => ({
+  type: ActionTypes.SHOW_CONFIRM,
+  payload: {
+    message: message,
+    title: title,
+    onConfirm: onConfirm
+  }
+})
+
+export const closeConfirmDialog = () => ({
+  type: ActionTypes.CLOSE_CONFIRM
+})
+
 export const showBackdrop = () => ({
   type: ActionTypes.SHOW_BACKDROP
 })

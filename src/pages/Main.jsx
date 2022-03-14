@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import actions from '../redux/actions'
 import BackdropC from '../components/Backdrop'
 import SEO from './SEO'
+import AlertDialog from '../components/AlertDialog'
 
 const Main = () => {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ const Main = () => {
         <Navbar />
         <Snackbar />
         <AppRouter />
+        <AlertDialog />
         <Footer />
       </>
   )
