@@ -40,11 +40,11 @@ const SportPage = () => {
         <div className={'w-full flex justify-center items-center my-4'}>
           <div className={'w-3/5 md:w-2/5 flex-col'}>
             <input placeholder={'輸入想找的名字'} onChange={changeHandler} ref={searchRef} type="text" className={'p-2 w-full rounded outline-0 ring-4 ring-custom-400 focus:ring-custom-700'}/>
-            <div className={'m-4 text-center dark:text-custom-200 w-full'}>
+            <div className={'m-4 text-center dark:text-custom-200 w-full text-sm'}>
               這個分區是：<span className={'bg-white p-2 dark:text-custom-900'}>{categoryData.text}</span>
             </div>
             {localUser.displayName &&
-                <div className={'m-4 text-center dark:text-custom-200'}>
+                <div className={'text-center text-sm dark:text-custom-200'}>
                   你在這個分區還有 <span className={'text-red-500 bg-white p-2'}>{categoryData.canVote - localUser[categoryData.sportCount]}</span> 票可以投
                 </div>
             }
@@ -59,7 +59,7 @@ const SportPage = () => {
               </div>
             : <div className={'w-full text-center text-custom-200 text-2xl'}>
                 {
-                  (copy.length < 0 || loading)
+                  (copy.length === 0)
                     ? <div className={pageWrapper}>
                         {
                           [1, 2, 3, 4, 5, 6, 7, 8].map(s => <CardLoader key={s} />)

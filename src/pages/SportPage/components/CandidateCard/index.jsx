@@ -27,7 +27,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
         <div className="p-2 flex flex-col items-center">
           <div className="font-bold text-xl">{candidate.username}</div>
           <p className="text-gray-700 text-base text-center">
-            {candidate.introduction.length > 70 ? candidate.introduction.substring(0, 70) + '...' : candidate.introduction }
+            {candidate.introduction.length > 85 ? candidate.introduction.substring(0, 85) + '...' : candidate.introduction }
           </p>
         </div>
         <div className="px-6 flex justify-evenly items-center space-x-4 absolute bottom-4">
