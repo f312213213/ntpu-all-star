@@ -79,8 +79,10 @@ export const getSportPageData = (dispatch, sportType, setCandidates, setCopy) =>
       tempArray.push({ id: doc.id, data: doc.data() })
     })
 
-    setCandidates(tempArray)
-    setCopy(tempArray)
+    setTimeout(() => {
+      setCopy(tempArray)
+      setCandidates(tempArray)
+    }, 500)
     dispatch(actions.app.closeBackdrop())
   }, 1000)
   window.gtag('event', 'load_' + sportType + 'Page', {

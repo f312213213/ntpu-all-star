@@ -18,10 +18,10 @@ const Category = () => {
           <SportType type={'女籃'} path={'basketballFemale'} />
           <SportType type={'男排-舉球員'} path={'volleyballMaleSetter'} />
           <SportType type={'男排-自由球員'} path={'volleyballMaleLibero'} />
-          <SportType type={'男排-快攻手'} path={'volleyballMaleSpiker'} />
-          <SportType type={'男排-邊線'} path={'volleyballMaleEdgeLine'} />
+          <SportType type={'男排-中間手'} path={'volleyballMaleSpiker'} />
+          <SportType type={'男排-邊線攻擊手'} path={'volleyballMaleEdgeLine'} />
           <SportType type={'女排-舉球員'} path={'volleyballFemaleSetter'} />
-          <SportType type={'女排-邊線'} path={'volleyballFemaleEdgeLine'} />
+          <SportType type={'女排-邊線攻擊手'} path={'volleyballFemaleEdgeLine'} />
         </div>
       </div>
   )

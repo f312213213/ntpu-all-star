@@ -64,6 +64,7 @@ const AppRouter = () => {
         .then((firestoreDoc) => {
           dispatch(actions.user.userLogin(firestoreDoc.data()))
         })
+      dispatch(actions.app.showSnackbar('success', '登入成功！'))
       return dispatch(actions.app.closeBackdrop())
     }
     dispatch(actions.app.closeBackdrop())
