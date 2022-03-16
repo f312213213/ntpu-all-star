@@ -43,7 +43,7 @@ export const useCategoryData = (sportType) => {
   }
   if (sportType === 'volleyballMaleSpiker') {
     return {
-      text: '男排-快攻手',
+      text: '男排-中間手',
       canVote: 3,
       sportCount: 'vbSpikerVC',
       pathName: 'volleyball/male/spiker'
@@ -51,7 +51,7 @@ export const useCategoryData = (sportType) => {
   }
   if (sportType === 'volleyballMaleEdgeLine') {
     return {
-      text: '男排-邊線',
+      text: '男排-邊線攻擊手',
       canVote: 4,
       sportCount: 'vbEdgeLineVC',
       pathName: 'volleyball/male/edgeline'
@@ -67,7 +67,7 @@ export const useCategoryData = (sportType) => {
   }
   if (sportType === 'volleyballFemaleEdgeLine') {
     return {
-      text: '女排-邊線',
+      text: '女排-邊線攻擊手',
       canVote: 6,
       sportCount: 'vgEdgeLineVC',
       pathName: 'volleyball/female/edgeline'
