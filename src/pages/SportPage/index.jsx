@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom'
 import CandidateCard from './components/CandidateCard'
 import actions from '../../redux/actions'
 import { useUser } from '../../hooks/user'
-import { useCategoryData } from '../../hooks/app'
+import { useCategoryData, useLoading } from '../../hooks/app'
+import CardLoader from './components/CandidateCard/CardLoader'
 
 const SportPage = () => {
   const [candidates, setCandidates] = useState([])
@@ -14,6 +15,7 @@ const SportPage = () => {
   const searchRef = createRef()
   const dispatch = useDispatch()
   const localUser = useUser()
+  const loading = useLoading()
   const categoryData = useCategoryData(sportType)
 
   useEffect(() => {
@@ -47,18 +49,23 @@ const SportPage = () => {
                 </div>
             }
           </div>
-
         </div>
         {
           candidates?.length > 0
-            ? <div className={'w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4'}>
+            ? <div className={pageWrapper}>
                 {
                   candidates.map((c) => <CandidateCard sportType={sportType} key={c.id} id={c.id} candidate={c.data}/>)
                 }
               </div>
             : <div className={'w-full text-center text-custom-200 text-2xl'}>
                 {
-                  copy.length > 0 ? '沒有明星ㄌ' : '載入中'
+                  (copy.length < 0 || loading)
+                    ? <div className={pageWrapper}>
+                        {
+                          [1, 2, 3, 4, 5, 6, 7, 8].map(s => <CardLoader key={s} />)
+                        }
+                      </div>
+                    : '沒有明星ㄌ'
                 }
               </div>
         }
@@ -68,3 +75,5 @@ const SportPage = () => {
 }
 
 export default SportPage
+
+const pageWrapper = 'w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4'

@@ -1,7 +1,11 @@
 import { useSelector } from 'react-redux'
 
 export const useFirebase = () => {
-  return useSelector(state => state.app)
+  return useSelector(state => state.app.app)
+}
+
+export const useLoading = () => {
+  return useSelector(state => state.app.backdrop)
 }
 
 export const useCategoryData = (sportType) => {
