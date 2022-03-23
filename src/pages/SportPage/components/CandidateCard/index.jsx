@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useUser } from '../../../../hooks/user'
 import actions from '../../../../redux/actions'
 import { useCategoryData } from '../../../../hooks/app'
+import { ButtonBase } from '@mui/material'
 
 const CandidateCard = ({ candidate, id, sportType }) => {
   const db = getFirestore()
@@ -33,9 +34,9 @@ const CandidateCard = ({ candidate, id, sportType }) => {
         <div className="px-6 flex justify-evenly items-center space-x-4 absolute bottom-4">
           {
             localUser.uid &&
-              <button onClick={confirmVote} disabled={!userCanVote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500 disabled:border-none disabled:text-gray-700 disabled:opacity-75 disabled:bg-gray-300'}>
+              <ButtonBase onClick={confirmVote} disabled={!userCanVote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500 disabled:border-none disabled:text-gray-700 disabled:opacity-75 disabled:bg-gray-300'}>
                 投給我！
-              </button>
+              </ButtonBase>
           }
           <div className={'mt-1'}>
             目前票數：{count}

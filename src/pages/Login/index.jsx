@@ -5,6 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google'
 
 import actions from '../../redux/actions'
 import { useUser } from '../../hooks/user'
+import { ButtonBase } from '@mui/material'
 
 const Login = () => {
   const auth = getAuth()
@@ -27,12 +28,12 @@ const Login = () => {
         <div className={'PageContainer bg-custom-200 flex justify-center items-center'}>
           {
             !userLocal.displayName &&
-              <button onClick={handleClick} className={'flex flex-row items-center justify-center space-x-2 bg-custom-1000 text-lg text-custom-200 px-4 py-2 rounded-2xl hover:bg-custom-700 transition'}>
+              <ButtonBase onClick={handleClick} className={'flex flex-row items-center justify-center space-x-2 bg-custom-1000 text-lg text-custom-200 px-4 py-2 rounded-2xl hover:bg-custom-700 transition'}>
                 <GoogleIcon />
                 <span>
                   用學校發的google帳號登入
                 </span>
-              </button>
+              </ButtonBase>
           }
         </div>
       </div>

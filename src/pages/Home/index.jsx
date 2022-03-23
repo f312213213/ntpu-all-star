@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import actions from '../../redux/actions'
 import { useUser } from '../../hooks/user'
+import { ButtonBase } from '@mui/material'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -40,7 +41,7 @@ const Home = () => {
             </span>
           </div>
           {
-            <button className={'bg-highLight p-4 rounded-xl'} onClick={clickHandler}>前往投票</button>
+            <ButtonBase className={'bg-highLight p-4 rounded-xl text-white'} onClick={clickHandler}>前往投票</ButtonBase>
           }
         </div>
       </div>
