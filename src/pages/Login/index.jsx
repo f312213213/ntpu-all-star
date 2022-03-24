@@ -28,7 +28,7 @@ const Login = () => {
         <div className={'PageContainer bg-custom-200 flex justify-center items-center'}>
           {
             !userLocal.displayName &&
-              <ButtonBase onClick={handleClick} className={'flex flex-row items-center justify-center space-x-2 bg-custom-1000 text-lg text-custom-200 px-4 py-2 rounded-2xl hover:bg-custom-700 transition'}>
+              <ButtonBase onClick={handleClick} className={'flex flex-row items-center justify-center space-x-2 bg-custom-1000 text-lg text-custom-200 px-4 py-2 rounded-2xl hover:bg-custom-700 dark:bg-custom-200 dark:text-custom-900 dark:hover:bg-custom-400 transition'}>
                 <GoogleIcon />
                 <span>
                   用學校發的google帳號登入
