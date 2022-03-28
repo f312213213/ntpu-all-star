@@ -58,6 +58,7 @@ const AppRouter = () => {
       const loginJson = JSON.parse(sessionLogin)
       if (!loginJson.email.includes('gm.ntpu.edu.tw')) {
         dispatch(actions.app.showSnackbar('error', '這不是北大的信箱！'))
+        dispatch(actions.user.userLogout())
         return dispatch(actions.app.closeBackdrop())
       }
       getDoc(doc(db, 'user', loginJson.uid))

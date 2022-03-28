@@ -22,9 +22,13 @@ const CandidateCard = ({ candidate, id, sportType }) => {
   const confirmVote = async () => {
     dispatch(actions.app.showConfirmDialog(`確定投給 ${candidate.username} 嗎？`, '確定投給他嗎', vote))
   }
+
+  const openCandidateDialog = () => {
+    dispatch(actions.app.showCandidateDialog(candidate.introduction, candidate.username, candidate.photoURL, candidate.voteCount, confirmVote))
+  }
   return (
       <div className="w-full h-96 rounded flex flex-col items-center shadow-lg bg-custom-200 dark:bg-custom-400 transition relative">
-        <img className="h-1/2" src={candidate.photoLink || candidate.photoURL} alt={candidate.introduction} />
+        <img className="h-1/2" src={candidate.photoLink || candidate.photoURL} alt={candidate.introduction} onClick={openCandidateDialog} />
         <div className="p-2 flex flex-col items-center">
           <div className="font-bold text-xl">{candidate.username}</div>
           <p className="text-gray-700 text-base text-center">

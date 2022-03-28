@@ -6,6 +6,7 @@ import { collection, getDocs, getFirestore, query, orderBy } from 'firebase/fire
 
 import { firebaseConfig } from '../../config/firebaseConfig'
 import actions from '../actions'
+import CandidateDialog from '../../components/CandidateDialog'
 
 export const appInit = () => {
   const app = initializeApp(firebaseConfig)
@@ -47,6 +48,21 @@ export const showConfirmDialog = (message, title, onConfirm) => ({
 
 export const closeConfirmDialog = () => ({
   type: ActionTypes.CLOSE_CONFIRM
+})
+
+export const showCandidateDialog = (introduction, username, photoURL, voteCount, onConfirm) => ({
+  type: ActionTypes.SHOW_CANDIDATE,
+  payload: {
+    introduction: introduction,
+    username: username,
+    photoURL: photoURL,
+    voteCount: voteCount,
+    onConfirm: onConfirm
+  }
+})
+
+export const closeCandidateDialog = () => ({
+  type: ActionTypes.CLOSE_CANDIDATE
 })
 
 export const showBackdrop = () => ({

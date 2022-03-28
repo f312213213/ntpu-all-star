@@ -9,6 +9,7 @@ import actions from '../redux/actions'
 import BackdropC from '../components/Backdrop'
 import SEO from './SEO'
 import AlertDialog from '../components/AlertDialog'
+import CandidateDialog from '../components/CandidateDialog'
 
 const Main = () => {
   const dispatch = useDispatch()
@@ -17,10 +18,11 @@ const Main = () => {
       <>
         <SEO />
         <BackdropC />
+        <CandidateDialog />
+        <AlertDialog />
         <Navbar />
         <Snackbar />
         <AppRouter />
-        <AlertDialog />
         <Footer />
       </>
   )

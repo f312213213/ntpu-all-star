@@ -13,6 +13,14 @@ const defaultState = {
     title: null,
     onConfirm: null
   },
+  candidateDialog: {
+    show: false,
+    introduction: null,
+    username: null,
+    photoURL: null,
+    voteCount: null,
+    onConfirm: null
+  },
   backdrop: false,
   helmet: {
     title: '北大明星賽 | 2022',
@@ -80,6 +88,25 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         alertDialog: defaultState.alertDialog
+      }
+    }
+    case ActionTypes.SHOW_CANDIDATE: {
+      return {
+        ...state,
+        candidateDialog: {
+          show: true,
+          introduction: action.payload.introduction,
+          username: action.payload.username,
+          photoURL: action.payload.photoURL,
+          voteCount: action.payload.voteCount,
+          onConfirm: action.payload.onConfirm
+        }
+      }
+    }
+    case ActionTypes.CLOSE_CANDIDATE: {
+      return {
+        ...state,
+        candidateDialog: defaultState.candidateDialog
       }
     }
     default: {
