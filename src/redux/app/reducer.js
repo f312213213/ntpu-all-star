@@ -19,6 +19,7 @@ const defaultState = {
     username: null,
     photoURL: null,
     voteCount: null,
+    userCanVote: false,
     onConfirm: null
   },
   backdrop: false,
@@ -99,6 +100,7 @@ export default (state = defaultState, action) => {
           username: action.payload.username,
           photoURL: action.payload.photoURL,
           voteCount: action.payload.voteCount,
+          userCanVote: action.payload.userCanVote,
           onConfirm: action.payload.onConfirm
         }
       }

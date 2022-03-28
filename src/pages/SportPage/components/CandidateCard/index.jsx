@@ -24,7 +24,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
   }
 
   const openCandidateDialog = () => {
-    dispatch(actions.app.showCandidateDialog(candidate.introduction, candidate.username, candidate.photoURL, candidate.voteCount, confirmVote))
+    dispatch(actions.app.showCandidateDialog(candidate.introduction, candidate.username, candidate.photoURL, candidate.voteCount, userCanVote, confirmVote))
   }
   return (
       <div className="w-full h-96 rounded flex flex-col items-center shadow-lg bg-custom-200 dark:bg-custom-400 transition relative">
@@ -32,7 +32,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
         <div className="p-2 flex flex-col items-center">
           <div className="font-bold text-xl">{candidate.username}</div>
           <p className="text-gray-700 text-base text-center">
-            {candidate.introduction.length > 80 ? candidate.introduction.substring(0, 80) + '...' : candidate.introduction }
+            {candidate.introduction.length > 70 ? candidate.introduction.substring(0, 70) + '...' : candidate.introduction }
           </p>
         </div>
         <div className="px-6 flex justify-evenly items-center space-x-4 absolute bottom-4">

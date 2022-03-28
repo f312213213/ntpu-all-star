@@ -50,13 +50,14 @@ export const closeConfirmDialog = () => ({
   type: ActionTypes.CLOSE_CONFIRM
 })
 
-export const showCandidateDialog = (introduction, username, photoURL, voteCount, onConfirm) => ({
+export const showCandidateDialog = (introduction, username, photoURL, voteCount, userCanVote, onConfirm) => ({
   type: ActionTypes.SHOW_CANDIDATE,
   payload: {
     introduction: introduction,
     username: username,
     photoURL: photoURL,
     voteCount: voteCount,
+    userCanVote: userCanVote,
     onConfirm: onConfirm
   }
 })

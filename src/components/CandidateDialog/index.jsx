@@ -43,7 +43,7 @@ function CandidateDialog () {
             <Button onClick={handleClose}>
               取消
             </Button>
-            <Button onClick={handleConfirm}>
+            <Button onClick={handleConfirm} disabled={!candidateDialogStatus.userCanVote}>
               投給我！
             </Button>
           </DialogActions>
