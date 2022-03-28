@@ -33,7 +33,7 @@ function CandidateDialog () {
             {candidateDialogStatus.username}
           </DialogTitle>
           <DialogContent>
-            <img className="h-1/2" src={candidateDialogStatus.photoLink || candidateDialogStatus.photoURL} alt={candidateDialogStatus.introduction} />
+            <img className={'w-full'} src={candidateDialogStatus.photoLink || candidateDialogStatus.photoURL} alt={candidateDialogStatus.introduction} />
 
             <DialogContentText id="alert-dialog-description">
               {candidateDialogStatus.introduction}
