@@ -26,7 +26,7 @@ const Home = () => {
       <div className={'Page'}>
         <div className={'PageContainer flex flex-col justify-center items-center space-y-8'}>
           <div>
-            投票時間：3/25~4/8
+            投票時間：3/31 12:00 ~ 4/8 23:30
           </div>
           <div className={'flex flex-col items-center space-y-3'}>
             <span>
