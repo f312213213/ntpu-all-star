@@ -6,7 +6,7 @@ import Category from './Cotegary'
 import Login from './Login'
 import SportPage from './SportPage'
 import actions from '../redux/actions'
-import { getAuth, getRedirectResult } from 'firebase/auth'
+import { getAuth, getRedirectResult, signOut } from 'firebase/auth'
 import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
 import { useDispatch } from 'react-redux'
 
@@ -21,6 +21,11 @@ const AppRouter = () => {
     const result = await getRedirectResult(auth)
     if (result) {
       if (result.user.email.includes('gm.ntpu.edu.tw')) {
+        if (parseInt(result.user.email.substring(2, 5)) <= 104) {
+          dispatch(actions.app.closeBackdrop())
+          signOut(auth)
+          return dispatch(actions.app.showSnackbar('error', '這信箱有問題！'))
+        }
         getDoc(doc(db, 'user', result.user.uid))
           .then((firestoreDoc) => {
             dispatch(actions.user.userLogin(firestoreDoc.data()))
@@ -49,6 +54,7 @@ const AppRouter = () => {
         dispatch(actions.app.closeBackdrop())
         return navigate('/category')
       } else {
+        signOut(auth)
         dispatch(actions.app.closeBackdrop())
         return dispatch(actions.app.showSnackbar('error', '這不是北大的信箱！'))
       }
@@ -57,9 +63,15 @@ const AppRouter = () => {
     if (sessionLogin) {
       const loginJson = JSON.parse(sessionLogin)
       if (!loginJson.email.includes('gm.ntpu.edu.tw')) {
+        signOut(auth)
         dispatch(actions.app.showSnackbar('error', '這不是北大的信箱！'))
         dispatch(actions.user.userLogout())
         return dispatch(actions.app.closeBackdrop())
+      }
+      if (parseInt(loginJson.email.substring(2, 5)) <= 104) {
+        dispatch(actions.app.closeBackdrop())
+        signOut(auth)
+        return dispatch(actions.app.showSnackbar('error', '這信箱有問題！'))
       }
       getDoc(doc(db, 'user', loginJson.uid))
         .then((firestoreDoc) => {
