@@ -20,7 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(actions.app.changeHelmet('首頁 | 北大明星賽 2022', '這是北大明星賽投票網站的首頁'))
-  })
+  }, [])
 
   return (
       <div className={'Page'}>

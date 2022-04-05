@@ -24,7 +24,7 @@ const SportPage = () => {
 
   useEffect(() => {
     dispatch(actions.app.changeHelmet(`${categoryData?.text} | 北大明星賽 2022`, `這個頁面在投${categoryData?.text}`))
-  })
+  }, [])
 
   const changeHandler = () => {
     if (searchRef.current.value === '') {

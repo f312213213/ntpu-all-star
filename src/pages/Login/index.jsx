@@ -21,7 +21,7 @@ const Login = () => {
 
   useEffect(() => {
     dispatch(actions.app.changeHelmet('登入 | 北大明星賽 2022', '這是登入北大明星賽投票網站的頁面'))
-  })
+  }, [])
 
   return (
       <div className={'Page'}>
