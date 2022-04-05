@@ -13,7 +13,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
   const localUser = useUser()
   const [count, setCount] = useState(candidate.voteCount)
   const categoryData = useCategoryData(sportType)
-  const userCanVote = localUser[categoryData.sportCount] < categoryData.canVote && localUser.voted.indexOf(id) === -1
+  const userCanVote = localUser[categoryData.sportCount] < categoryData.canVote && localUser.voted.indexOf(id) === -1 && Date.now() < 1649431800000
 
   const vote = async () => {
     dispatch(actions.user.userVote(dispatch, categoryData.sportCount, localUser, db, categoryData.pathName, id, setCount, count))
@@ -39,7 +39,7 @@ const CandidateCard = ({ candidate, id, sportType }) => {
           {
             localUser.uid &&
               <ButtonBase onClick={confirmVote} disabled={!userCanVote} className={'border-custom-800 border-2 px-4 py-2 mx-auto rounded-xl bg-custom-600 transition hover:bg-custom-500 disabled:border-none disabled:text-gray-700 disabled:opacity-75 disabled:bg-gray-300'}>
-                投給我！
+                {Date.now() < 1649431800000 ? '投給我！' : '投票時間已過！'}
               </ButtonBase>
           }
           <div className={'mt-1'}>
