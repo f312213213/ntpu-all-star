@@ -30,6 +30,11 @@ const Footer = () => {
     setMode('dark')
     return document.documentElement.classList.add('dark')
   }
+
+  const openSource = () => {
+    if (Date.now() < 1649431800000) return dispatch(actions.app.showSnackbar('info', '將在投票結束後開源！'))
+    window.open('https://github.com/f312213213/ntpu-all-star', '_blank')
+  }
   return (
       <footer className={'-bottom-10 flex justify-between items-center bg-custom-800 text-custom-200 p-2 w-full px-8'}>
         <div className={'group h-full relative'}>
@@ -45,7 +50,7 @@ const Footer = () => {
           <button className={'mr-4'} onClick={toggleDarkMode}>
             {mode === 'dark' ? <WbSunnyIcon /> : <ModeNightIcon />}
           </button>
-          <div onClick={() => dispatch(actions.app.showSnackbar('info', '將在投票結束後開源！'))} rel="noreferrer" className={'cursor-pointer'}>
+          <div onClick={openSource} rel="noreferrer" className={'cursor-pointer'}>
             <GitHubIcon />
           </div>
         </div>
